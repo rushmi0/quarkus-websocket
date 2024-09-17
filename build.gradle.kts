@@ -54,6 +54,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
 
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
+    implementation("io.quarkus:quarkus-reactive-routes")
+    implementation("io.quarkus:quarkus-rest")
     implementation("io.quarkiverse.config:quarkus-config-consul")
     implementation("io.quarkus:quarkus-websockets-next")
     implementation("io.quarkus:quarkus-websockets-client")

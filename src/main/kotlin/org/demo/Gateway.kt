@@ -1,9 +1,9 @@
 package org.demo
 
 import io.quarkus.runtime.Startup
+import io.quarkus.vertx.web.Header
+import io.quarkus.vertx.web.Route
 import io.quarkus.websockets.next.*
-import io.vertx.ext.web.Router
-import io.vertx.ext.web.handler.StaticHandler
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
 import java.io.InputStreamReader
@@ -12,7 +12,8 @@ import java.io.InputStreamReader
 @ApplicationScoped
 class Gateway {
 
-
+    @Inject
+    lateinit var session: WebSocketConnection
 
     @Startup
     fun init() {
@@ -25,23 +26,29 @@ class Gateway {
         } ?: println("Banner not found.")
     }
 
-
     @OnOpen
-    fun onOpen(session: WebSocketConnection) {
-        println("Connection opened: ${session.id()}")
+    fun onOpen() {
+
+        session.isOpen.run {
+            println("Connection opened: ${session.id()}")
+        }
+
+        //println(accept[1])
+
+        //loadServerInfo()
+
     }
 
     @OnTextMessage
-    fun onMessage(message: String, session: WebSocketConnection) {
+    fun onMessage(message: String) {
         println("Connection on: ${session.id()}")
         println("Received: $message")
-        session.sendTextAndAwait(message)
+        session.sendTextAndAwait("O.K.!!!")
     }
 
     @OnClose
-    fun onClose(session: WebSocketConnection) {
+    fun onClose() {
         println("Connection closed: ${session.id()}")
     }
-
 
 }
