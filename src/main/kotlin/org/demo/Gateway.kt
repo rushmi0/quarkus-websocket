@@ -2,11 +2,15 @@ package org.demo
 
 import io.quarkus.runtime.Startup
 import io.quarkus.websockets.next.*
+
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
+
 import org.jboss.resteasy.reactive.RestResponse
 import org.jboss.resteasy.reactive.RestResponse.ResponseBuilder
+
 import java.io.InputStreamReader
+
 
 @WebSocket(path = "/")
 @ApplicationScoped
