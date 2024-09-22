@@ -26,12 +26,11 @@ class Gateway {
         } ?: println("Banner not found.")
     }
 
-    private fun relayInfo(): String {
+    private fun jsonInfo(): String {
         return """
             {
-              "name": "lnwza007",
               "icon": "https://image.nostr.build/fc4a04e980020ed876874fa0142edd9fc22774efa8fa067f96285f2f44965e38.jpg",
-              "description": "7iPsOdH85TybKDT6s0vpw",
+              "description": "Hello, World!"
             }
         """.trimIndent()
     }
