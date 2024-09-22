@@ -26,6 +26,16 @@ class Gateway {
         } ?: println("Banner not found.")
     }
 
+    private fun relayInfo(): String {
+        return """
+            {
+              "name": "lnwza007",
+              "icon": "https://image.nostr.build/fc4a04e980020ed876874fa0142edd9fc22774efa8fa067f96285f2f44965e38.jpg",
+              "description": "7iPsOdH85TybKDT6s0vpw",
+            }
+        """.trimIndent()
+    }
+
     @OnOpen
     fun onOpen() {
 
@@ -33,17 +43,12 @@ class Gateway {
             println("Connection opened: ${session.id()}")
         }
 
-        //println(accept[1])
-
-        //loadServerInfo()
-
     }
 
     @OnTextMessage
     fun onMessage(message: String) {
         println("Connection on: ${session.id()}")
-        println("Received: $message")
-        session.sendTextAndAwait("O.K.!!!")
+        session.sendTextAndAwait("O.K.!!!, $message")
     }
 
     @OnClose
