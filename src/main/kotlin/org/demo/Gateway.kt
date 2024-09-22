@@ -4,8 +4,6 @@ import io.quarkus.runtime.Startup
 import io.quarkus.websockets.next.*
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
-import jakarta.ws.rs.core.MediaType;
-import org.jboss.resteasy.reactive.RestHeader
 import org.jboss.resteasy.reactive.RestResponse
 import org.jboss.resteasy.reactive.RestResponse.ResponseBuilder
 import java.io.InputStreamReader

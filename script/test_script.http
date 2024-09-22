@@ -18,4 +18,4 @@ accept: application/nostr+json
 WEBSOCKET ws://localhost:6724
 Content-Type: application/json
 
-["REQ","hsZEOtaDsENYkP5H-JIWp",{"kinds": [1],"limit": 2}, {"kinds": [4],"limit": 150}]
+["hsZEOtaDsENYkP5H-JIWp"]
