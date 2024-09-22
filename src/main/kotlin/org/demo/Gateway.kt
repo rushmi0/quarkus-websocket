@@ -1,11 +1,13 @@
 package org.demo
 
 import io.quarkus.runtime.Startup
-import io.quarkus.vertx.web.Header
-import io.quarkus.vertx.web.Route
 import io.quarkus.websockets.next.*
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
+import jakarta.ws.rs.core.MediaType;
+import org.jboss.resteasy.reactive.RestHeader
+import org.jboss.resteasy.reactive.RestResponse
+import org.jboss.resteasy.reactive.RestResponse.ResponseBuilder
 import java.io.InputStreamReader
 
 @WebSocket(path = "/")
@@ -37,12 +39,14 @@ class Gateway {
     }
 
     @OnOpen
-    fun onOpen() {
+    fun onOpen(): RestResponse<String>? {
 
         session.isOpen.run {
             println("Connection opened: ${session.id()}")
+            return@run ResponseBuilder.ok("Session opened!!").build()
         }
 
+        return null
     }
 
     @OnTextMessage
