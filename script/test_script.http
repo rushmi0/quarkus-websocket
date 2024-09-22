@@ -11,7 +11,7 @@ Content-Type: text/html;charset=UTF-8
 ###
 
 GET http://localhost:6724
-accept: application/nostr+json
+accept: application/lnwza007+json
 
 ###
 

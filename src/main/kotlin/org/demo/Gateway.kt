@@ -40,14 +40,13 @@ class Gateway {
     }
 
     @OnOpen
-    fun onOpen(): RestResponse<String>? {
+    fun onOpen(): RestResponse<String> {
 
         session.isOpen.run {
             println("Connection opened: ${session.id()}")
-            return@run ResponseBuilder.ok("Session opened!!").build()
+            return ResponseBuilder.ok("Session opened!!").build()
         }
 
-        return null
     }
 
     @OnTextMessage
