@@ -6,9 +6,6 @@ import io.quarkus.websockets.next.*
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.inject.Inject
 
-import org.jboss.resteasy.reactive.RestResponse
-import org.jboss.resteasy.reactive.RestResponse.ResponseBuilder
-
 import java.io.InputStreamReader
 
 
@@ -30,22 +27,15 @@ class Gateway {
         } ?: println("Banner not found.")
     }
 
-    private fun jsonInfo(): String {
-        return """
-            {
-              "icon": "https://image.nostr.build/fc4a04e980020ed876874fa0142edd9fc22774efa8fa067f96285f2f44965e38.jpg",
-              "description": "Hello, World!"
-            }
-        """.trimIndent()
-    }
-
     @OnOpen
-    fun onOpen(): RestResponse<String> {
+    fun onOpen() {
 
         session.isOpen.run {
             println("Connection opened: ${session.id()}")
-            return ResponseBuilder.ok("Session opened!!").build()
         }
+
+        val header = session.handshakeRequest().header("accept")
+        println(header)
 
     }
 
